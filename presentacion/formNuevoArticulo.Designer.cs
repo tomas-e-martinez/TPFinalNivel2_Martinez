@@ -62,14 +62,14 @@
             this.txtCodigo.Location = new System.Drawing.Point(194, 61);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(160, 22);
-            this.txtCodigo.TabIndex = 1;
+            this.txtCodigo.TabIndex = 0;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(194, 89);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(160, 22);
-            this.txtNombre.TabIndex = 3;
+            this.txtNombre.TabIndex = 1;
             // 
             // lblNombre
             // 
@@ -85,7 +85,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(194, 117);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(160, 22);
-            this.txtDescripcion.TabIndex = 5;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // lblDescripcion
             // 
@@ -101,7 +101,7 @@
             this.txtUrlImagen.Location = new System.Drawing.Point(194, 145);
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(160, 22);
-            this.txtUrlImagen.TabIndex = 7;
+            this.txtUrlImagen.TabIndex = 3;
             // 
             // lblUrlImagen
             // 
@@ -117,7 +117,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(194, 173);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(160, 22);
-            this.txtPrecio.TabIndex = 9;
+            this.txtPrecio.TabIndex = 4;
             // 
             // lblPrecio
             // 
@@ -148,26 +148,28 @@
             // 
             // cboMarca
             // 
+            this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca.FormattingEnabled = true;
             this.cboMarca.Location = new System.Drawing.Point(194, 201);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(160, 24);
-            this.cboMarca.TabIndex = 14;
+            this.cboMarca.TabIndex = 5;
             // 
             // cboCategoria
             // 
+            this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(194, 229);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(160, 24);
-            this.cboCategoria.TabIndex = 15;
+            this.cboCategoria.TabIndex = 6;
             // 
             // btnAceptar
             // 
             this.btnAceptar.Location = new System.Drawing.Point(129, 284);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(84, 26);
-            this.btnAceptar.TabIndex = 16;
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             // 
@@ -176,7 +178,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(247, 284);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(84, 26);
-            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -211,6 +213,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lblCodigo);
+            this.MaximizeBox = false;
             this.Name = "formNuevoArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formNuevoArticulo";
