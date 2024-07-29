@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace presentacion
 {
-    public partial class Form1 : Form
+    public partial class formInfoArticulo : Form
     {
-        public Form1()
+        public formInfoArticulo()
         {
             InitializeComponent();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
