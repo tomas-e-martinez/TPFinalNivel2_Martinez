@@ -44,6 +44,7 @@
             this.pbxArticulo.Location = new System.Drawing.Point(136, 31);
             this.pbxArticulo.Name = "pbxArticulo";
             this.pbxArticulo.Size = new System.Drawing.Size(332, 276);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxArticulo.TabIndex = 0;
             this.pbxArticulo.TabStop = false;
             // 
@@ -87,11 +88,11 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(133, 377);
-            this.lblMarca.MaximumSize = new System.Drawing.Size(80, 20);
-            this.lblMarca.MinimumSize = new System.Drawing.Size(80, 20);
+            this.lblMarca.Location = new System.Drawing.Point(179, 372);
+            this.lblMarca.MaximumSize = new System.Drawing.Size(100, 20);
+            this.lblMarca.MinimumSize = new System.Drawing.Size(100, 20);
             this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(80, 20);
+            this.lblMarca.Size = new System.Drawing.Size(100, 20);
             this.lblMarca.TabIndex = 4;
             this.lblMarca.Text = "Marca";
             this.lblMarca.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,11 +100,11 @@
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(388, 377);
-            this.lblCategoria.MaximumSize = new System.Drawing.Size(80, 20);
-            this.lblCategoria.MinimumSize = new System.Drawing.Size(80, 20);
+            this.lblCategoria.Location = new System.Drawing.Point(325, 372);
+            this.lblCategoria.MaximumSize = new System.Drawing.Size(100, 20);
+            this.lblCategoria.MinimumSize = new System.Drawing.Size(100, 20);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(80, 20);
+            this.lblCategoria.Size = new System.Drawing.Size(100, 20);
             this.lblCategoria.TabIndex = 5;
             this.lblCategoria.Text = "Categoría";
             this.lblCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -147,6 +148,7 @@
             this.Name = "formInfoArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle del artículo";
+            this.Load += new System.EventHandler(this.formInfoArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

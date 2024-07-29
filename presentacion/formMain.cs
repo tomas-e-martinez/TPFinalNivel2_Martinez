@@ -36,7 +36,7 @@ namespace presentacion
 
         private void btnDetalle_Click(object sender, EventArgs e)
         {
-            formInfoArticulo formInfoArticulo = new formInfoArticulo();
+            formInfoArticulo formInfoArticulo = new formInfoArticulo((Articulo)dgvArticulos.CurrentRow.DataBoundItem);
             formInfoArticulo.ShowDialog();
         }
 
