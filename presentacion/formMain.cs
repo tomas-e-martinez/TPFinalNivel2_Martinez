@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using negocio;
+using dominio;
 
 namespace presentacion
 {
     public partial class formMain : Form
     {
+        private List<Articulo> listaArticulos;
         public formMain()
         {
             InitializeComponent();
@@ -35,6 +38,44 @@ namespace presentacion
         {
             formInfoArticulo formInfoArticulo = new formInfoArticulo();
             formInfoArticulo.ShowDialog();
+        }
+
+        private void formMain_Load(object sender, EventArgs e)
+        {
+            cargar();
+        }
+
+        private void cargar()
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                listaArticulos = negocio.listar();
+                dgvArticulos.DataSource = listaArticulos;
+
+                cargarImagen(listaArticulos[0].ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void ocultarColumnas()
+        {
+
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxArticulo.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pbxArticulo.Load("https://www.svgrepo.com/show/508699/landscape-placeholder.svg");
+            }
         }
     }
 }
