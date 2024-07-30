@@ -25,11 +25,13 @@ namespace presentacion
             formNuevoArticulo formAgregar = new formNuevoArticulo();
             formAgregar.Text = "Agregar artículo";
             formAgregar.ShowDialog();
+            cargar();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            formNuevoArticulo formModificar = new formNuevoArticulo();
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            formNuevoArticulo formModificar = new formNuevoArticulo(seleccionado);
             formModificar.Text = "Modificar artículo";
             formModificar.ShowDialog();
         }

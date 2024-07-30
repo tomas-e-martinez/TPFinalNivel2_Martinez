@@ -164,10 +164,10 @@
             // pbxArticulo
             // 
             this.pbxArticulo.BackColor = System.Drawing.SystemColors.Control;
-            this.pbxArticulo.Location = new System.Drawing.Point(777, 53);
+            this.pbxArticulo.Location = new System.Drawing.Point(770, 53);
             this.pbxArticulo.Name = "pbxArticulo";
-            this.pbxArticulo.Size = new System.Drawing.Size(242, 244);
-            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxArticulo.Size = new System.Drawing.Size(276, 308);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxArticulo.TabIndex = 12;
             this.pbxArticulo.TabStop = false;
             // 
