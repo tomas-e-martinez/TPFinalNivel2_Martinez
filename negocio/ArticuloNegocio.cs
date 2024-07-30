@@ -11,6 +11,27 @@ namespace negocio
 {
     public class ArticuloNegocio
     {
+        public void eliminar(Articulo eliminar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearQuery("delete ARTICULOS where Id = @id");
+                datos.setearParametro("@id", eliminar.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();

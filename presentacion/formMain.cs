@@ -115,5 +115,26 @@ namespace presentacion
                 cboCriterio.Items.Add("Contiene");
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                DialogResult respuesta = MessageBox.Show("¿Eliminar '" + seleccionado.Nombre + "'?", "Eliminando...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    negocio.eliminar(seleccionado);
+                    MessageBox.Show("'" + seleccionado.Nombre + "' eliminado con éxito.");
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
