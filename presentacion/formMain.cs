@@ -84,6 +84,7 @@ namespace presentacion
         {
             dgvArticulos.Columns["ImagenUrl"].Visible = false;
             dgvArticulos.Columns["Id"].Visible = false;
+            dgvArticulos.Columns["Descripcion"].Visible = false;
         }
 
         private void cargarImagen(string imagen)
