@@ -19,12 +19,14 @@ namespace presentacion
         public formNuevoArticulo()
         {
             InitializeComponent();
+            lblTitulo.Text = "Nuevo artículo";
         }
 
         public formNuevoArticulo(Articulo articulo)
         {
             InitializeComponent();
             this.articulo = articulo;
+            lblTitulo.Text = "Modificar artículo";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -35,6 +37,9 @@ namespace presentacion
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
+
+            if (!(soloNumeros(txtPrecio.Text)))
+                return;
 
             try
             {
@@ -62,9 +67,12 @@ namespace presentacion
 
                 Close();
             }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, revise que el valor para el campo 'Precio' esté escrito correctamente");
+            }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString())  ;
             }
         }
@@ -79,11 +87,13 @@ namespace presentacion
                 cboMarca.DataSource = marcaNegocio.listar();
                 cboMarca.ValueMember = "Id";
                 cboMarca.DisplayMember = "Descripcion";
+                cboMarca.SelectedIndex = -1;
                 cboCategoria.DataSource = categoriaNegocio.listar();
                 cboCategoria.ValueMember = "Id";
                 cboCategoria.DisplayMember = "Descripcion";
+                cboCategoria.SelectedIndex = -1;
 
-                if(articulo != null)
+                if (articulo != null)
                 {
                     txtNombre.Text = articulo.Nombre;
                     txtCodigo.Text = articulo.Codigo;
@@ -100,6 +110,8 @@ namespace presentacion
             {
                 MessageBox.Show(ex.ToString());
             }
+
+            validarCampos();
         }
 
         private void cargarImagen(string imagen)
@@ -117,6 +129,54 @@ namespace presentacion
         private void txtUrlImagen_Leave(object sender, EventArgs e)
         {
             cargarImagen(txtUrlImagen.Text);
+        }
+
+        private void validarCampos()
+        {
+            if(string.IsNullOrEmpty(txtCodigo.Text) || string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtPrecio.Text) || cboCategoria.SelectedIndex == -1 || cboMarca.SelectedIndex == -1)
+                btnAceptar.Enabled = false;
+            else
+                btnAceptar.Enabled = true;
+        }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+            validarCampos();
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+            validarCampos();
+        }
+
+        private void txtPrecio_TextChanged(object sender, EventArgs e)
+        {
+
+            validarCampos();
+        }
+
+        private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            validarCampos();
+        }
+
+        private void cboCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            validarCampos();
+        }
+
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)) && (caracter != ',' && caracter != '.'))
+                {
+                    MessageBox.Show("Solo se pueden ingresar números o comas/puntos en el campo de 'Precio'.");
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

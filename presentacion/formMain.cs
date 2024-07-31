@@ -18,6 +18,7 @@ namespace presentacion
         public formMain()
         {
             InitializeComponent();
+            KeyPreview = true;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -222,6 +223,12 @@ namespace presentacion
                 btnEliminar.Enabled = false;
                 cargarImagen("");
             }
+        }
+
+        private void formMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(btnEliminar.Enabled && e.KeyCode == Keys.Delete)
+                btnEliminar.PerformClick();
         }
     }
 }

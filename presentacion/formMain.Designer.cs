@@ -176,6 +176,7 @@
             // 
             // formMain
             // 
+            this.AcceptButton = this.btnFiltro;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 493);
@@ -199,6 +200,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado de artículos";
             this.Load += new System.EventHandler(this.formMain_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formMain_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
