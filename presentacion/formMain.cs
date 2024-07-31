@@ -30,15 +30,24 @@ namespace presentacion
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            formNuevoArticulo formModificar = new formNuevoArticulo(seleccionado);
-            formModificar.Text = "Modificar artículo";
-            formModificar.ShowDialog();
+            try
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                formNuevoArticulo formModificar = new formNuevoArticulo(seleccionado);
+                formModificar.Text = "Modificar artículo";
+                formModificar.ShowDialog();
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Debe seleccionar un artículo para ver el detalle.");
+            }
         }
 
         private void btnDetalle_Click(object sender, EventArgs e)
         {
-            formInfoArticulo formInfoArticulo = new formInfoArticulo((Articulo)dgvArticulos.CurrentRow.DataBoundItem);
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            formInfoArticulo formInfoArticulo = new formInfoArticulo(seleccionado);
+            formInfoArticulo.Text = seleccionado.Nombre;
             formInfoArticulo.ShowDialog();
         }
 
@@ -134,6 +143,84 @@ namespace presentacion
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                if (validarFiltro())
+                    return;
+
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltro.Text;
+
+                dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private bool validarFiltro()
+        {
+            if(cboCampo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione el campo a filtrar antes de buscar.");
+                return true;
+            }
+            else if(cboCriterio.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione el criterio a filtrar antes de buscar.");
+                return true;
+            }
+            if(cboCampo.SelectedItem.ToString() == "Precio")
+            {
+                if(string.IsNullOrEmpty(txtFiltro.Text))
+                {
+                    MessageBox.Show("El filtro de búsqueda no debe estar vacío.");
+                    return true;
+                }
+                if (!(soloNumeros(txtFiltro.Text)))
+                {
+                    MessageBox.Show("Solo puede usar números para filtrar por precio.");
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                    return false;
+            }
+            return true;
+        }
+
+        private void dgvArticulos_DataSourceChanged(object sender, EventArgs e)
+        {
+            if(dgvArticulos.CurrentRow != null)
+            {
+                btnModificar.Enabled = true;
+                btnDetalle.Enabled = true;
+                btnEliminar.Enabled = true;
+            }
+            else
+            {
+                btnModificar.Enabled = false;
+                btnDetalle.Enabled = false;
+                btnEliminar.Enabled = false;
+                cargarImagen("");
             }
         }
     }

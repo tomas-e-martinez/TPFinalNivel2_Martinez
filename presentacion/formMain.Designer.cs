@@ -58,6 +58,7 @@
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(694, 308);
             this.dgvArticulos.TabIndex = 0;
+            this.dgvArticulos.DataSourceChanged += new System.EventHandler(this.dgvArticulos_DataSourceChanged);
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // btnDetalle
@@ -161,6 +162,7 @@
             this.btnFiltro.TabIndex = 8;
             this.btnFiltro.Text = "Buscar";
             this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
             // 
             // pbxArticulo
             // 
